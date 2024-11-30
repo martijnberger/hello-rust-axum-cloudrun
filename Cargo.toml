@@ -1,0 +1,17 @@
+[package]
+name = "hello-axum"
+version = "0.1.0"
+edition = "2021"
+authors = ["Martijn Berger"]
+
+[dependencies]
+axum = "0.7"
+tokio = { version = "1", features = ["rt-multi-thread"] }
+
+
+[profile.release]
+opt-level = "z"  # Optimize for size.
+strip = true  # Automatically strip symbols from the binary.
+lto = true # Enable Link Time Optimization (LTO)
+codegen-units = 1 # Reduce Parallel Code Generation Units to Increase Optimization
+panic = "abort"
